@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Perspective\IpLocate\Api\Data\CityInterface"
+                type="Perspective\IpLocate\Model\City"/>
+    <preference for="Perspective\IpLocate\Api\CityRepositoryInterface"
+                type="Perspective\IpLocate\Model\CityRepository"/>
+    <preference for="Perspective\IpLocate\Api\Data\CitySearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults"/>
+
+    <virtualType name="Perspective\IpLocate\Model\ResourceModel\City\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">novaposhta_city</argument>
+            <argument name="collection" xsi:type="object" shared="false">Perspective\IpLocate\Model\ResourceModel\City\Collection</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item xsi:type="string" name="iplocate_novaposhta_listing_data_source">Perspective\IpLocate\Model\ResourceModel\City\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="perspective_iplocate_import_command" xsi:type="object">Perspective\IpLocate\Console\Command\ImportCommand</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

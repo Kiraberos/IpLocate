@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Perspective_IpLocate::css/select2.css"></css>
+    </head>
+    <body>
+        <referenceContainer name="header.panel">
+            <container name="header.city.result" label="Page Header Panel" htmlTag="div" htmlClass="panel links">
+                <block class="Magento\Framework\View\Element\Template" template="Perspective_IpLocate::detection.phtml" name="city_result" before="header.links" ifconfig="detect_position/general/enable">
+<!--                    <arguments>-->
+<!--                        <argument name="view_model" xsi:type="object">Perspective\IpLocate\ViewModel\City</argument>-->
+<!--                    </arguments>-->
+                </block>
+            </container>
+        </referenceContainer>
+    </body>
+</page>

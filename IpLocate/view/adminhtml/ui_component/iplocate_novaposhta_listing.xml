@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">iplocate_novaposhta_listing.iplocate_novaposhta_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="add">
+                <url path="*/*/new"/>
+                <class>primary</class>
+                <label translate="true">Sync with Novaposhta</label>
+            </button>
+        </buttons>
+        <spinner>iplocate_novaposhta_columns</spinner>
+        <deps>
+            <dep>iplocate_novaposhta_listing.iplocate_novaposhta_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="iplocate_novaposhta_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">city_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="iplocate_novaposhta_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>city_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+<!--        <argument name="dataProvider" xsi:type="configurableObject">-->
+<!--            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>-->
+<!--            <argument name="name" xsi:type="string">iplocate_novaposhta_listing_data_source</argument>-->
+<!--            <argument name="primaryFieldName" xsi:type="string">city_id</argument>-->
+<!--            <argument name="requestFieldName" xsi:type="string">id</argument>-->
+<!--            <argument name="data" xsi:type="array">-->
+<!--                <item name="config" xsi:type="array">-->
+<!--                    <item name="update_url" xsi:type="url" path="mui/index/render"/>-->
+<!--                </item>-->
+<!--            </argument>-->
+<!--        </argument>-->
+<!--        <argument name="data" xsi:type="array">-->
+<!--            <item name="js_config" xsi:type="array">-->
+<!--                <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>-->
+<!--            </item>-->
+<!--        </argument>-->
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="iplocate_novaposhta_columns">
+
+        <settings>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">iplocate_novaposhta_listing.iplocate_novaposhta_listing.columns.actions</item>
+                    <item name="target" xsi:type="string">applyAction</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">edit</item>
+                        <item name="1" xsi:type="string">${ $.$data.rowIndex }</item>
+                    </item>
+                </param>
+            </childDefaults>
+        </settings>
+
+        <column name="city_id" sortOrder="20">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">City ID</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+        <column name="name_ua" sortOrder="30">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">City Name UA</label>
+            </settings>
+        </column>
+        <column name="name_ru" sortOrder="40">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">City Name RU</label>
+            </settings>
+        </column>
+        <column name="type_ru" sortOrder="200">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Settlement RU</label>
+            </settings>
+        </column>
+        <column name="area_description_ua" sortOrder="50">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Area Ua</label>
+            </settings>
+        </column>
+        <column name="area_description_ru" sortOrder="50">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Area Ru</label>
+            </settings>
+        </column>
+        <column name="type_ua" sortOrder="60">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Settlement UA</label>
+            </settings>
+        </column>
+        <column name="zip_code" sortOrder="60">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Zip Code</label>
+            </settings>
+        </column>
+    </columns>
+</listing>

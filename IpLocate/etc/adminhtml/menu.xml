@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Perspective_IpLocate::iplocate" module="Perspective_IpLocate" resource="Perspective_IpLocate::iplocate" sortOrder="50" title="IpLocate" parent="Magento_Catalog::catalog"/>
+        <add id="Perspective_IpLocate::iplocate_main" sortOrder="10" title="Nova Poshta Cities" module="Perspective_IpLocate"
+             parent="Perspective_IpLocate::iplocate" resource="Perspective_IpLocate::iplocate_main" translate="title"
+             action="iplocate/novaposhta/index"/>
+    </menu>
+</config>

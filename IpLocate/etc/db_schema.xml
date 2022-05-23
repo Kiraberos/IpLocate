@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="novaposhta_city" resource="default" engine="innodb" comment="NovaPoshta City entity">
+        <column xsi:type="int" name="city_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="City Entity ID"/>
+        <column xsi:type="varchar" name="ref" nullable="false" length="36" comment="City Identifier"/>
+        <column xsi:type="varchar" name="name_ua" nullable="false" length="50" comment="City Name UA"/>
+        <column xsi:type="varchar" name="name_ru" nullable="false" length="50" comment="City Name RU"/>
+        <column xsi:type="varchar" name="area" nullable="false" length="36" comment="Area"/>
+        <column xsi:type="varchar" name="type_ua" nullable="false" length="36" comment="Type UA"/>
+        <column xsi:type="varchar" name="type_ru" nullable="false" length="36" comment="Type RU"/>
+        <column xsi:type="varchar" name="area_description_ua" nullable="false" length="36" comment="Area Description UA"/>
+        <column xsi:type="varchar" name="area_description_ru" nullable="false" length="36" comment="Area Description RU"/>
+        <column xsi:type="varchar" name="zip_code" nullable="false" length="36" comment="Zip Code"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="city_id"/>
+        </constraint>
+
+        <index referenceId="CITY_IDENTIFIER" indexType="btree">
+            <column name="ref"/>
+        </index>
+
+        <index referenceId="CITY_NAME" indexType="fulltext">
+            <column name="name_ua"/>
+            <column name="name_ru"/>
+        </index>
+    </table>
+
+    <table name="quote_address">
+        <column xsi:type="varchar" name="ref" nullable="true" length="36" comment="NovaPoshta City Ref"/>
+    </table>
+
+</schema>

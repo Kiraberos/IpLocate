@@ -1,0 +1,46 @@
+<div id="modal-city" data-bind="scope: 'cityInputAutocomplete'" style="display: none;">
+    <form action="" method="post" id="ip-locate-form" enctype="multipart/form-data">
+        <select class="js-autocomplete" type="text" data-form-part="custom_ui_form" autocomplete="on"
+                data-bind=" attr: {
+                name: inputName,
+                id: uid,
+                disabled: disabled,
+                'aria-describedby': getDescriptionId(),
+                'aria-required': required,
+                'aria-invalid': error() ? true : 'false',
+                placeholder: placeholder
+            },
+                value: value,
+                hasFocus: focused,
+                optgroup: options,
+                optionsCaption: caption,
+                optionsValue: 'value',
+                optionsText: 'label',
+                afterRender: function (element) {
+                    select2(element);
+            },
+             optionsAfterRender: function(option, item) {
+                if (item && item.disabled) {
+                    ko.applyBindingsToNode(option, {attr: {disabled: true}}, item);
+            };
+        }"
+        ></select>
+    </form>
+</div>
+<div data-bind="scope: 'cityInputAutocomplete'">
+    <span class="city-value" data-bind="click: openPopup, text: currentCity"  style="cursor: pointer"></span>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "cityInputAutocomplete": {
+                        "component": "Perspective_IpLocate/js/view/city"
+                    }
+               }
+           }
+       }
+    }
+</script>
